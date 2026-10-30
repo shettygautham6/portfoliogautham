@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAUTHAM R SHETTY | Professional Portfolio & Streaming Experience</title>
+    <meta name="description" content="Gautham R Shetty - MCA Student & Software Developer. Explore projects, technical stack, resume, and education in a Netflix-inspired streaming interface.">
+    <meta name="author" content="Gautham R Shetty">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23141414'/><path d='M25 20h15l20 35V20h12v60H57L37 45v35H25z' fill='%23E50914'/></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 1. CINEMATIC INTRO -->
+    <div id="cinematic-intro">
+        <div class="intro-logo-container">
+            <div class="intro-brand">Gautham <span>R Shetty</span></div>
+            <div class="intro-subtitle">A Streaming Portfolio Experience</div>
+        </div>
+        <div class="intro-controls">
+            <button class="btn-skip" id="skip-intro-btn"><i class="fa-solid fa-forward"></i> Skip Intro</button>
+        </div>
+    </div>
+
+    <!-- 2. PROFILE SELECTION SCREEN -->
+    <div id="profile-screen" class="hidden">
+        <div class="profile-container">
+            <h1 class="profile-title">Who's watching?</h1>
+            <div class="profiles-grid">
+                <button class="profile-card" onclick="selectProfile('recruiter')" aria-label="Select Recruiter Profile">
+        <div class="profile-avatar" style="background: linear-gradient(135deg, #E50914, #831010);">
+          <i class="fa-solid fa-briefcase"></i>
+        </div>
+        <div class="profile-name">Recruiter</div>
+      </button>
+                <button class="profile-card" onclick="selectProfile('developer')" aria-label="Select Developer Profile">
+        <div class="profile-avatar" style="background: linear-gradient(135deg, #0071eb, #003875);">
+          <i class="fa-solid fa-code"></i>
+        </div>
+        <div class="profile-name">Developer</div>
+      </button>
+                <button class="profile-card" onclick="selectProfile('explorer')" aria-label="Select Explorer Profile">
+        <div class="profile-avatar" style="background: linear-gradient(135deg, #e5a909, #8c6305);">
+          <i class="fa-solid fa-compass"></i>
+        </div>
+        <div class="profile-name">Explorer</div>
+      </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. MAIN APP WRAPPER -->
+    <div id="main-app">
+        <!-- NAVIGATION BAR -->
+        <nav class="navbar" id="navbar">
+            <div class="nav-left">
+                <a href="#home" class="nav-logo">GAUTHAM R SHETTY</a>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Tech Stack</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#resume" onclick="openResumeModal(event)">Resume</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <button class="nav-icon-btn" onclick="openSearch()" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <div class="profile-menu-wrapper">
+                    <div class="nav-profile-dropdown" tabindex="0" role="button" aria-label="Profile Menu">
+                        <div class="nav-profile-avatar" id="current-profile-avatar"><i class="fa-solid fa-user"></i></div>
+                        <i class="fa-solid fa-caret-down" style="font-size: 0.8rem; color: var(--netflix-gray);"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item" onclick="switchProfile()"><i class="fa-solid fa-users"></i> Switch Profile</button>
+                        <button class="dropdown-item" onclick="openResumeModal()"><i class="fa-solid fa-file-pdf"></i> View Resume</button>
+                        <button class="dropdown-item" onclick="replayIntro()"><i class="fa-solid fa-play"></i> Replay Intro</button>
+                        <button class="dropdown-item" onclick="clearBrowsingHistory()"><i class="fa-solid fa-clock-rotate-left"></i> Clear History</button>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item" onclick="location.href='#contact'"><i class="fa-solid fa-envelope"></i> Contact Me</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- SEARCH OVERLAY -->
+        <div id="search-overlay">
+            <div class="search-header">
+                <button class="search-close-btn" onclick="closeSearch()" aria-label="Close Search"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="search-input-wrapper">
+                <input type="text" class="search-input" id="search-input" placeholder="Search projects, technologies, education..." oninput="handleSearch(event)">
+            </div>
+            <div class="search-results-container">
+                <div class="search-results-grid" id="search-results-grid">
+                    <!-- Dynamic search results -->
+                </div>
+            </div>
+        </div>
+
+        <!-- HERO SECTION -->
+        <header class="hero" id="home">
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fa-solid fa-star"></i> Featured Professional Profile</div>
+                <h1 class="hero-title">GAUTHAM R SHETTY</h1>
+                <div class="hero-subtitle">MCA Student | Aspiring Software Professional | Technology Enthusiast</div>
+                <p class="hero-desc">Computer Applications graduate completing an MCA with hands-on project experience across full-stack web platforms, agricultural e-commerce recommendation systems, and multi-app Android food delivery architectures.</p>
+                <div class="hero-buttons">
+                    <button class="btn-netflix primary" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})"><i class="fa-solid fa-play"></i> Explore Work</button>
+                    <button class="btn-netflix secondary" onclick="openProjectModal('food-truck')"><i class="fa-solid fa-circle-info"></i> More Info</button>
+                    <a href="extracted_files/Gautham_Resume.pdf" download="Gautham_Resume.pdf" class="btn-netflix secondary"><i class="fa-solid fa-download"></i> Download Resume</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- CONTENT ROWS -->
+        <main class="content-rows-container">
+            <!-- ROW A: TRENDING PROJECTS -->
+            <section class="row-section" id="projects">
+                <h2 class="row-title">Trending Projects <span>Explore all built systems</span></h2>
+                <div class="row-posters-wrapper">
+                    <button class="carousel-btn left" onclick="scrollRow('projects-row', -1)" aria-label="Scroll Left"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="row-posters" id="projects-row">
+                        <!-- Populated by JS -->
+                    </div>
+                    <button class="carousel-btn right" onclick="scrollRow('projects-row', 1)" aria-label="Scroll Right"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <!-- ROW B: CONTINUE EXPLORING -->
+            <section class="row-section" id="continue-row-section" style="display: none;">
+                <h2 class="row-title">Continue Exploring <span>Recently viewed items</span></h2>
+                <div class="row-posters-wrapper">
+                    <button class="carousel-btn left" onclick="scrollRow('continue-row', -1)" aria-label="Scroll Left"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="row-posters" id="continue-row">
+                        <!-- Populated by JS -->
+                    </div>
+                    <button class="carousel-btn right" onclick="scrollRow('continue-row', 1)" aria-label="Scroll Right"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <!-- ROW C: TECHNICAL STACK -->
+            <section class="row-section" id="skills">
+                <h2 class="row-title">My Technical Stack <span>Core competencies & tools</span></h2>
+                <div class="row-posters-wrapper">
+                    <button class="carousel-btn left" onclick="scrollRow('skills-row', -1)" aria-label="Scroll Left"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="row-posters" id="skills-row">
+                        <!-- Populated by JS -->
+                    </div>
+                    <button class="carousel-btn right" onclick="scrollRow('skills-row', 1)" aria-label="Scroll Right"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <!-- ROW D: EDUCATION & LEARNING JOURNEY -->
+            <section class="row-section" id="education">
+                <h2 class="row-title">Education & Learning Journey <span>Academic milestones</span></h2>
+                <div class="row-posters-wrapper">
+                    <button class="carousel-btn left" onclick="scrollRow('education-row', -1)" aria-label="Scroll Left"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="row-posters" id="education-row">
+                        <!-- Populated by JS -->
+                    </div>
+                    <button class="carousel-btn right" onclick="scrollRow('education-row', 1)" aria-label="Scroll Right"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <!-- ROW E: RECOMMENDED FOR YOU -->
+            <section class="row-section" id="recommendations-section">
+                <h2 class="row-title" id="recommendations-title">Recommended for You <span>Curated selection</span></h2>
+                <div class="row-posters-wrapper">
+                    <button class="carousel-btn left" onclick="scrollRow('recommendations-row', -1)" aria-label="Scroll Left"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="row-posters" id="recommendations-row">
+                        <!-- Populated by JS -->
+                    </div>
+                    <button class="carousel-btn right" onclick="scrollRow('recommendations-row', 1)" aria-label="Scroll Right"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <!-- ROW F: STRENGTHS & APPROACH -->
+            <section class="row-section">
+                <h2 class="row-title">Professional Strengths <span>How I approach software engineering</span></h2>
+                <div class="row-posters-wrapper">
+                    <button class="carousel-btn left" onclick="scrollRow('strengths-row', -1)" aria-label="Scroll Left"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="row-posters" id="strengths-row">
+                        <!-- Populated by JS -->
+                    </div>
+                    <button class="carousel-btn right" onclick="scrollRow('strengths-row', 1)" aria-label="Scroll Right"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </section>
+        </main>
+
+        <!-- CONTACT SECTION -->
+        <section class="contact-section" id="contact">
+            <div class="contact-container">
+                <div class="hero-badge">Get In Touch</div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Let's Connect</h2>
+                <p style="color: var(--netflix-gray); margin-bottom: 30px;">Looking for an entry-level software or application development role. Send a message directly.</p>
+
+                <div class="contact-form">
+                    <form id="contact-form" onsubmit="handleContactSubmit(event)">
+                        <div class="form-group">
+                            <label class="form-label" for="contact-name">Your Name</label>
+                            <input type="text" id="contact-name" class="form-input" required placeholder="Recruiter / Professional">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="contact-email">Your Email</label>
+                            <input type="email" id="contact-email" class="form-input" required placeholder="name@company.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="contact-message">Message</label>
+                            <textarea id="contact-message" class="form-textarea" required placeholder="Discuss an opportunity or project..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-netflix primary" id="submit-btn" style="width: 100%;">Send Message</button>
+                        <div id="form-status" class="form-status"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/gautham-shetty-9a00a7321" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/shettygautham6" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="mailto:shettygautham6@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+                <div class="footer-links">
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#projects" class="footer-link">Projects</a>
+                    <a href="#skills" class="footer-link">Tech Stack</a>
+                    <a href="#education" class="footer-link">Education</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                    <a href="#" onclick="openResumeModal(event)" class="footer-link">Resume PDF</a>
+                    <a href="#" onclick="replayIntro(event)" class="footer-link">Replay Cinematic Intro</a>
+                </div>
+                <div class="footer-copy">
+                    © 2026 GAUTHAM R SHETTY. Built with a Netflix-inspired streaming architecture. All verified resume data and project specifications strictly adhered to.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ================= MODAL TEMPLATE ================= -->
+    <div class="modal-overlay" id="detail-modal" onclick="if(event.target === this) closeModal()">
+        <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="modal-close-btn" onclick="closeModal()" aria-label="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+            <div id="modal-content-area">
+                <!-- Dynamic modal content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script src="script.js"></script>
+</body>
+
+</html>
